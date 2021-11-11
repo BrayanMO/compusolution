@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\Subcategory;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
@@ -51,6 +52,21 @@ class CreateProduct extends Component
 
     public function save(){
         $this->validate();
+
+        $product = new Product();
+
+        $product->name = $this->name;
+        $product->slug = $this->slug;
+        $product->description = $this->description;
+        $product->price = $this->price;
+        $product->subcategory_id = $this->subcategory_id;
+        $product->brand_id = $this->brand_id;
+        $product->quantity = $this->quantity;
+
+        $product->save();
+
+        return redirect()->route('admin.products.edit', $product);
+
     }
 
     public function render()

@@ -22,6 +22,8 @@ class CreateOrdersTable extends Migration
 
             $table->string('contact');
             $table->string('phone');
+            $table->string('dni');
+
 
             $table->enum('status', [Order::PENDIENTE, Order::RECIBIDO, Order::ENVIADO, Order::ENTREGADO, Order::ANULADO])->default(Order::PENDIENTE);
             $table->enum('envio_type', [1, 2]); //1 - recojo en tienda y 2 envio a domicilio

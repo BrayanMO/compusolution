@@ -12,6 +12,15 @@
                 <x-jet-input-error for="contact" />
             </div>
 
+            <div class="mb-4">
+                <x-jet-label value="Dni de contácto" />
+                <x-jet-input type="text"
+                            wire:model.defer="dni" {{-- el ..defer hara que se actulice la info despues de presionar el boton continuar --}}
+                            placeholder="Ingrese el dni de la persona que recibirá el producto"
+                            class="w-full"/>
+                <x-jet-input-error for="dni" />
+            </div>
+
             <div>
                 <x-jet-label value="Telefono de contácto" />
                 <x-jet-input type="text"

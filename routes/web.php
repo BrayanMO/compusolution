@@ -23,6 +23,7 @@ Route::get('products/{product}', [ProductController::class, 'show'])->name('prod
 
 Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
 
+
 Route::middleware(['auth'])->group(function(){
 
     Route::get('orders', [OrderController::class, 'index'])->name('orders.index');

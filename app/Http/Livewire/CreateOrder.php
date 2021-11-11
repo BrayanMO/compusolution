@@ -14,7 +14,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 class CreateOrder extends Component
 {
     public $envio_type = 1;
-    public $contact, $phone ,$address, $reference, $shipping_cost = 0;
+    public $contact, $phone, $dni, $address, $reference, $shipping_cost = 0;
     public $departments, $cities = [], $districts = [];
 
     public $department_id = "", $city_id = "", $district_id = "";
@@ -22,6 +22,7 @@ class CreateOrder extends Component
     public $rules = [
         'contact' =>'required',
         'phone' =>'required',
+        'dni' => 'required',
         'envio_type' =>'required',
 
     ];
@@ -73,6 +74,7 @@ class CreateOrder extends Component
         $order->user_id = auth()->user()->id;
         $order->contact = $this->contact;
         $order->phone = $this->phone;
+        $order->dni = $this->dni;
         $order->envio_type = $this->envio_type;
         $order->shipping_cost = 0;
         $order->total = $this->shipping_cost + Cart::subtotal();

@@ -68,6 +68,8 @@
                         <p class="text-lg font-semibold uppercase">Datos de contacto</p>
                         <p class="text-sm">Persona que recibirá el producto: {{$order->contact}}</p>
                         <p class="text-sm">Telefono de contacto: {{$order->phone}} </p>
+                        <p class="text-sm">Dni de contacto: {{$order->dni}} </p>
+
                     </div>
 
                 </div>
