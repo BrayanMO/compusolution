@@ -73,5 +73,4 @@ class CreateProduct extends Component
     {
         return view('livewire.admin.create-product')->layout('layouts.admin');
     }
-    
 }
