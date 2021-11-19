@@ -4,11 +4,16 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
+                {{-- <div class="flex-shrink-0 flex items-center">
                     <a href="/">
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
-                </div>
+                </div> --}}
+                <a href="/" class="flex items-center">
+                    {{-- <x-jet-application-mark class="block h-9 w-auto" /> --}}
+                    <span class="text-2xl  h-7 w-aut text-gray-600 cursor-pointer font-semibold ">Compu</span>
+                    <span class="text-2xl font-bold h-7 w-aut text-orange-400 cursor-pointer">Solution</span>
+                </a>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -18,11 +23,14 @@
                     <x-jet-nav-link href="{{route('admin.orders.index')}}" :active="request()->routeIs('admin.orders.index')">
                         Ordenes
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{route('admin.categories.index')}}" :active="request()->routeIs('admin.categories.index')">
+                    <x-jet-nav-link href="{{route('admin.categories.index')}}" :active="request()->routeIs('admin.categories.*')">
                         Categorias
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{route('admin.departments.index')}}" :active="request()->routeIs('admin.departments.index')">
                         Departamentos
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{route('admin.departments.index')}}">
+                        Usuarios
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -153,7 +161,7 @@
             <x-jet-responsive-nav-link href="{{route('admin.orders.index')}}" :active="request()->routeIs('admin.orders.index')">
                 Ordenes
             </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{route('admin.categories.index')}}" :active="request()->routeIs('admin.categories.index')">
+            <x-jet-responsive-nav-link href="{{route('admin.categories.index')}}" :active="request()->routeIs('admin.categories.*')">
                 Categorias
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{route('admin.departments.index')}}" :active="request()->routeIs('admin.departments.index')">

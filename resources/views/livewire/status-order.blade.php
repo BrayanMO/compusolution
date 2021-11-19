@@ -76,8 +76,8 @@
                     <p class="text-sm">Calle Los Girasoles 123 </p>
                 @else
                     <p class="text-sm">Los productos serán enviados a:</p>
-                    <p class="text-sm">{{$order->address}} </p>
-                    <p>{{$order->department->name}} - {{$order->city->name}} - {{$order->district->name}}</p>
+                    <p class="text-sm">{{$envio->address}} </p>
+                    <p>{{$envio->department}} - {{$order->city}} - {{$envio->district}}</p>
 
                 @endif
 

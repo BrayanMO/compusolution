@@ -14,22 +14,35 @@ class CategoryFilter extends Component
 
     public $view = "grid";
 
+    protected $queryString = ['subcategoria', 'marca'];
+
     public function limpiar(){
-        $this->reset(['subcategoria', 'marca']);
+        $this->reset(['subcategoria', 'marca', 'page']);
+    }
+
+    public function updatedSubcategoria(){
+        $this->resetPage();
+    }
+
+    public function updatedMarca(){
+        $this->resetPage();
     }
 
     public function render()
     {
-        // $products = $this->category->products()
-        //             ->where('status', 2)->paginate(20);
+
 
         $productsQuery = Product::query()->whereHas('subcategory.category', function(Builder $query){
-            $query->where('id', $this->category->id);
+            $query->where([
+               ['id', $this->category->id],
+               ['status', 2]
+            ]);
         });
+
 
         if ($this->subcategoria) {
             $productsQuery = $productsQuery->whereHas('subcategory', function(Builder $query){
-                $query->where('name', $this->subcategoria);
+                $query->where('slug', $this->subcategoria);
             });
         }
         if ($this->marca) {

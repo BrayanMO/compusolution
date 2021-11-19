@@ -37,7 +37,9 @@ class OrderController extends Controller
 
         $items = json_decode($order->content);
 
-        return view ('orders.show', compact('order','items'));
+        $envio = json_decode($order->envio);
+
+        return view ('orders.show', compact('order','items', 'envio'));
     }
 
     public function pay(Order $order, Request $request){

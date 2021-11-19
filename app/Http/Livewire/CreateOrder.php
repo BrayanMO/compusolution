@@ -27,6 +27,13 @@ class CreateOrder extends Component
 
     ];
 
+    protected $validationAttributes =[
+        'contact' => 'nombre de contacto',
+        'phone' => 'celular',
+        'dni' => 'dni',
+        'envio_type' => 'tipo de envío',
+    ];
+
     public function mount(){
         $this->departments = Department::all();
     }
@@ -82,11 +89,18 @@ class CreateOrder extends Component
 
         if ($this->envio_type == 2) {
             $order->shipping_cost = $this->shipping_cost;
-            $order->department_id = $this->department_id;
+            /*$order->department_id = $this->department_id;
             $order->city_id = $this->city_id;
             $order->district_id = $this->district_id;
             $order->address = $this->address;
-            $order->reference = $this->reference;
+            $order->reference = $this->reference;*/
+            $order->envio = json_encode([
+                'department' => Department::find($this->department_id)->name,
+                'city' => City::find($this->city_id)->name,
+                'district' => City::find($this->district_id)->name,
+                'address' =>$this->address,
+                'references' => $this->references
+            ]);
         }
 
         $order->save();

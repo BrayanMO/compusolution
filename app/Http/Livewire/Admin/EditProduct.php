@@ -4,12 +4,15 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Image;
 use Livewire\Component;
 
 use App\Models\Product;
 use App\Models\Subcategory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
+
+use Illuminate\Support\Facades\Storage;
 
 class EditProduct extends Component
 {
@@ -28,6 +31,8 @@ class EditProduct extends Component
         'product.quantity' => 'numeric|required'
     ];
 
+    protected $listeners = ['refreshProduct', 'delete'];
+
     public function mount(Product $product){
         $this->product = $product;
 
@@ -42,6 +47,11 @@ class EditProduct extends Component
         $this->brands = Brand::whereHas('categories', function(Builder $query){
             $query->where('category_id', $this->category_id);
         })->get();
+    }
+
+
+    public function refreshProduct(){
+        $this->product = $this->product->fresh();
     }
 
     public function updatedProductName($value){
@@ -73,6 +83,26 @@ class EditProduct extends Component
         $this->product->save();
 
         $this->emit('saved');
+    }
+
+    public function deleteImage(Image $image){
+        Storage::delete([$image->url]);
+        $image->delete();
+
+        $this->product = $this->product->fresh();
+    }
+
+    public function delete(){
+        $images = $this->product->images;
+
+        foreach ($images as $image) {
+            Storage::delete($image->url);
+            $image->delete();
+        }
+
+        $this->product->delete();
+
+        return redirect()->route('admin.index');
     }
 
     public function render()

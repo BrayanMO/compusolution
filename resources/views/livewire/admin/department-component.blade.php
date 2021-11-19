@@ -14,7 +14,7 @@
                 <x-jet-label>
                     Nombre
                 </x-jet-label>
-                <x-jet-input wire:model="createForm.name" type="text" class="w-full mt-1" />
+                <x-jet-input wire:model.defer="createForm.name" type="text" class="w-full mt-1" />
                 <x-jet-input-error for="createForm.name" />
             </div>
         </x-slot>
@@ -30,4 +30,71 @@
     </x-jet-form-section>
 
     {{-- Mostrar Departamentos--}}
+    <x-jet-action-section>
+        <x-slot name="title">
+            Lista de departamentos
+        </x-slot>
+
+        <x-slot name="description">
+            Aquí encontrará todas los departamentos agregados
+        </x-slot>
+
+        <x-slot name="content">
+
+            <table class="text-gray-600">
+                <thead class="border-b border-gray-300">
+                    <tr class= "text-left">
+                        <th class="py-2 w-full">Nombre</th>
+                        <th class="py-2">Acción</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-300 h-80">
+                    @foreach ($departments as $department)
+                        <tr>
+                            <td class="py-2">
+
+                                <a href="{{route('admin.departments.show', $department)}}" class="upercase underline hover:text-blue-600">
+                                    {{$department->name}}
+                                </a>
+
+                            </td>
+                            <td class="py-2">
+                                <div class="flex divide-x divide-gray-300 font-semibold">
+                                    <a class="pr-2 hover:text-blue-600 cursor-pointer" wire:click="edit({{$department}})">Editar</a>
+                                    <a class="pl-2 hover:text-red-600 cursor-pointer" wire:click="">Eliminar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </x-slot>
+    </x-jet-action-section>
+
+    {{-- Modal Editar--}}
+    <x-jet-dialog-modal wire:model="editForm.open" wire:ignore>
+        <x-slot name="title">
+            Editar departamento
+        </x-slot>
+        <x-slot name="content">
+
+            <div class="space-y-3">
+                <div>
+                    <x-jet-label class="mt-3">
+                        Nombre
+                    </x-jet-label>
+
+                    <x-jet-input wire:model="editForm.name" type="text" class="w-full mt-1"/>
+
+                    <x-jet-input-error for="editForm.name"/>
+                </div>
+
+
+        </x-slot>
+        <x-slot name="footer">
+            <x-jet-danger-button wire:click="update" wire:loading.attr="disabled" wire:target="update">
+                Actualizar
+            </x-jet-danger-button>
+        </x-slot>
+    </x-jet-dialog-modal>
 </div>

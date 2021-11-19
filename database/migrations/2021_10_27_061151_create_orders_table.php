@@ -30,7 +30,7 @@ class CreateOrdersTable extends Migration
             $table->float('shipping_cost');
             $table->float('total');
             $table->json('content');
-            $table->unsignedBigInteger('department_id')->nullable();
+            /*$table->unsignedBigInteger('department_id')->nullable();
             $table->foreign('department_id')->references('id')->on('departments');
 
             $table->unsignedBigInteger('city_id')->nullable();
@@ -41,6 +41,10 @@ class CreateOrdersTable extends Migration
 
             $table->string('address')->nullable();
             $table->string('reference')->nullable();
+
+            $table->timestamps(); */
+
+            $table->json('envio')->nullable();
 
             $table->timestamps();
         });

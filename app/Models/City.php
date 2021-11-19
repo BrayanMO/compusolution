@@ -12,7 +12,7 @@ class City extends Model
     use HasFactory;
 
     public function districts(){
-        return $this->hasMany(Distric::class);
+        return $this->hasMany(District::class);
     }
 
     public function orders(){

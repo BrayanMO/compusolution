@@ -55,9 +55,15 @@
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="flex items-center">
                                         <div class="flex-shrink-0 h-10 w-10">
-                                            <img class="h-10 w-10 rounded-full object-cover"
-                                                src="{{ Storage::url($product->images->first()->url) }}"
+                                            @if ($product->images->count())
+                                                <img class="h-10 w-10 rounded-full object-cover"
+                                                    src="{{ Storage::url($product->images->first()->url) }}"
+                                                    alt="">
+                                            @else
+                                                <img class="h-10 w-10 rounded-full object-cover"
+                                                src="https://www.creativefabrica.com/wp-content/uploads/2020/09/11/Error-404-page-or-file-not-found-concept-Graphics-5425051-1.jpg"
                                                 alt="">
+                                            @endif
                                         </div>
                                         <div class="ml-4">
                                             <div class="text-sm font-medium text-gray-900">
