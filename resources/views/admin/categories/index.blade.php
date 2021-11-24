@@ -8,21 +8,21 @@
         <script>
             Livewire.on('deleteCategory', categorySlug => {
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
+                    title: '¿Estás Seguro?',
+                    text: "¡No podrás revertir esto!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: '¡Sí, borrar!'
                 }).then((result) => {
                     if (result.isConfirmed) {
 
                         Livewire.emitTo('admin.create-category', 'delete', categorySlug)
 
                         Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
+                            '¡Eliminado!',
+                            'La categoria ha sido eliminada.',
                             'success'
                         )
                     }

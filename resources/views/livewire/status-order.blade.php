@@ -77,7 +77,7 @@
                 @else
                     <p class="text-sm">Los productos serán enviados a:</p>
                     <p class="text-sm">{{$envio->address}} </p>
-                    <p>{{$envio->department}} - {{$order->city}} - {{$envio->district}}</p>
+                    <p>{{$envio->department}} - {{$envio->city}} - {{$envio->district}}</p>
 
                 @endif
 
@@ -101,7 +101,7 @@
                     <th></th>
                     <th>Precio</th>
                     <th>Cant</th>
-                    <th>Total</th>
+                    <th>Subtotal</th>
                 </tr>
             </thead>
 
@@ -131,5 +131,12 @@
             </tbody>
         </table>
     </div>
+
+    <div class="bg-white rounded-lg shadow-lg p-6 mb-6 text-right ">
+        <p>SUBTOTAL: S/ {{$order->total - $order->shipping_cost}}</p>
+        <p>ENVIO: S/ {{$order->shipping_cost}}</p>
+        <p>TOTAL:  S/ {{$order->total }}</p>
+    </div>
+
 
 </div>

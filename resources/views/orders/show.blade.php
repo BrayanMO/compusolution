@@ -12,12 +12,23 @@
                         <p>Recibido</p>
                     </div>
                 </div>
-                
+
+                <div class="{{ ($order->status >=3 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} h-1 flex-1  mx-2"></div>
+
+                <div class="relative ">
+                    <div class="{{ ($order->status >=3 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} rounded-full h-12 w-12  flex items-center justify-center">
+                        <i class="fas fa-check text-white"></i>
+                    </div>
+                    <div class="absolute -left-1 mt0-0.5">
+                        <p>Enviado</p>
+                    </div>
+                </div>
+
                 <div class="{{ ($order->status >=4 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} h-1 flex-1  mx-2"></div>
 
                 <div class="relative">
                     <div class="{{ ($order->status >=4 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} rounded-full h-12 w-12 flex items-center justify-center">
-                        <i class="fas fa-check text-white"></i>
+                        <i class="fas fa-truck text-white"></i>
                     </div>
                     <div class="absolute -left-2 mt0-0.5">
                         <p>Entregado</p>
@@ -86,8 +97,6 @@
                         <p class="text-sm">Los productos serán enviados a:</p>
                         <p class="text-sm">{{$envio->address}} </p>
                         <p>{{$envio->department}} - {{$envio->city}} - {{$envio->district}}</p>
-                        <p>   </p>
-                        <p></p>
 
                     @endif
 
@@ -111,7 +120,7 @@
                         <th></th>
                         <th>Precio</th>
                         <th>Cant</th>
-                        <th>Total</th>
+                        <th>Subtotal</th>
                     </tr>
                 </thead>
 
@@ -141,6 +150,13 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6 text-right ">
+                <p>SUBTOTAL: S/ {{$order->total - $order->shipping_cost}}</p>
+                <p>ENVIO: S/ {{$order->shipping_cost}}</p>
+                <p>TOTAL:  S/ {{$order->total }}</p>
+        </div>
+
 
     </div>
 </x-app-layout>

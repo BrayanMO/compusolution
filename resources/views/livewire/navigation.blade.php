@@ -51,10 +51,12 @@
                         </x-jet-dropdown-link>
 
                         <div class="border-t border-gray-100"></div>
-                        
-                        <x-jet-dropdown-link href="{{ route('admin.index') }}">
-                            Administrador
-                        </x-jet-dropdown-link>
+
+                        @role('admin')
+                            <x-jet-dropdown-link href="{{ route('admin.index') }}">
+                                Administrador
+                            </x-jet-dropdown-link>
+                        @endrole
 
                         <div class="border-t border-gray-100"></div>
 

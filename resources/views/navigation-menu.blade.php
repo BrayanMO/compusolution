@@ -26,10 +26,13 @@
                     <x-jet-nav-link href="{{route('admin.categories.index')}}" :active="request()->routeIs('admin.categories.*')">
                         Categorias
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{route('admin.brands.index')}}" :active="request()->routeIs('admin.brands.*')">
+                        Marcas
+                    </x-jet-nav-link>
                     <x-jet-nav-link href="{{route('admin.departments.index')}}" :active="request()->routeIs('admin.departments.index')">
                         Departamentos
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{route('admin.departments.index')}}">
+                    <x-jet-nav-link href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.index')">
                         Usuarios
                     </x-jet-nav-link>
                 </div>
@@ -164,8 +167,14 @@
             <x-jet-responsive-nav-link href="{{route('admin.categories.index')}}" :active="request()->routeIs('admin.categories.*')">
                 Categorias
             </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{route('admin.departments.index')}}" :active="request()->routeIs('admin.departments.index')">
+            <x-jet-responsive-nav-link href="{{route('admin.categories.index')}}" :active="request()->routeIs('admin.categories.*')">
+                Marcas
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{route('admin.brands.index')}}" :active="request()->routeIs('admin.brands.*')">
                 Departamentos
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.index')">
+                Usuarios
             </x-jet-responsive-nav-link>
         </div>
 

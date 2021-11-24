@@ -1,42 +1,42 @@
 <div class="container py-12">
-    {{-- Agregar departamento--}}
+    {{-- Formulario crear --}}
     <x-jet-form-section submit="save" class="mb-6">
         <x-slot name="title">
-            Agregar un nuevo Departamento
+            Agregar nueva marca
         </x-slot>
 
         <x-slot name="description">
-            Complete la información necesaria para agregar un nuevo departamento
+            En esta seccion podrá agregar nueva marca
         </x-slot>
 
         <x-slot name="form">
-            <div class="col-span-6 sm:col-span-4">
+            <div class="col-span -4 sm:col-span-4">
                 <x-jet-label>
                     Nombre
                 </x-jet-label>
-                <x-jet-input wire:model.defer="createForm.name" type="text" class="w-full mt-1" />
-                <x-jet-input-error for="createForm.name" />
+
+                <x-jet-input type="text" wire:model="createForm.name" class="w-full" />
+                </x-jet-input-error for="createForm.name">
             </div>
         </x-slot>
 
         <x-slot name="actions">
             <x-jet-action-message class="mr-3" on="saved">
-                Departamento agregado
+                Marca creada
             </x-jet-action-message>
             <x-jet-button>
                 Agregar
             </x-jet-button>
         </x-slot>
     </x-jet-form-section>
-
-    {{-- Mostrar Departamentos--}}
+    {{-- Lista de marcas --}}
     <x-jet-action-section>
         <x-slot name="title">
-            Lista de departamentos
+            Lista de marcas
         </x-slot>
 
         <x-slot name="description">
-            Aquí encontrará todas los departamentos agregados
+            Aquí encontrará todas las marcas agregadas
         </x-slot>
 
         <x-slot name="content">
@@ -48,20 +48,19 @@
                         <th class="py-2">Acción</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-gray-300 h-80">
-                    @foreach ($departments as $department)
+                <tbody class="divide-y divide-gray-300">
+                    @foreach ($brands as $brand)
                         <tr>
                             <td class="py-2">
 
-                                <a href="{{route('admin.departments.show', $department)}}" class="upercase underline hover:text-blue-600">
-                                    {{$department->name}}
-                                </a>
-
+                                <span class="uppercase">
+                                    {{$brand->name}}
+                            </span>
                             </td>
                             <td class="py-2">
                                 <div class="flex divide-x divide-gray-300 font-semibold">
-                                    <a class="pr-2 hover:text-blue-600 cursor-pointer" wire:click="edit({{$department}})">Editar</a>
-                                    <a class="pl-2 hover:text-red-600 cursor-pointer" wire:click="$emit('deleteDepartment', {{$department->id}})">Eliminar</a>
+                                    <a class="pr-2 hover:text-blue-600 cursor-pointer" wire:click="edit('{{$brand->id}}')">Editar</a>
+                                    <a class="pl-2 hover:text-red-600 cursor-pointer" wire:click="$emit('deleteBrand', '{{$brand->id}}')">Eliminar</a>
                                 </div>
                             </td>
                         </tr>
@@ -71,57 +70,53 @@
         </x-slot>
     </x-jet-action-section>
 
-    {{-- Modal Editar--}}
-    <x-jet-dialog-modal wire:model="editForm.open" wire:ignore>
+    {{-- Modal Editar --}}
+    <x-jet-dialog-modal wire:model="editForm.open">
+
         <x-slot name="title">
-            Editar departamento
+            Edit marca
         </x-slot>
+
         <x-slot name="content">
-
-            <div class="space-y-3">
-                <div>
-                    <x-jet-label class="mt-3">
-                        Nombre
-                    </x-jet-label>
-
-                    <x-jet-input wire:model="editForm.name" type="text" class="w-full mt-1"/>
-
-                    <x-jet-input-error for="editForm.name"/>
-                </div>
-
-
+            <x-jet-label>
+                Nombre
+            </x-jet-label>
+            <x-jet-input wire:model="editForm.name" type="text" class="w-full"/>
+            <x-jet-input-error for="editForm.name"/>
         </x-slot>
+
         <x-slot name="footer">
             <x-jet-danger-button wire:click="update" wire:loading.attr="disabled" wire:target="update">
                 Actualizar
             </x-jet-danger-button>
         </x-slot>
+
     </x-jet-dialog-modal>
 
     @push('script')
-
         <script>
-            Livewire.on('deleteDepartment', departmentId => {
+            Livewire.on('deleteBrand', brandId => {
                 Swal.fire({
-                    title:'Are you sure?',
-                    text:"You won't be able to revert this!",
+                    title: '¿Estás Seguro?',
+                    text: "¡No podrás revertir esto!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ye, delete it!'
+                    confirmButtonText: '¡Sí, borrar!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        Livewire.emitTo('admin.department-component', 'delete', departmentId)
+
+                        Livewire.emitTo('admin.brand-component', 'delete', brandId)
+
                         Swal.fire(
-                            'Deleted',
-                            'You file has been deleted',
+                            '¡Eliminado!',
+                            'La marca ha sido eliminada.',
                             'success'
                         )
                     }
                 })
             });
         </script>
-
     @endpush
 </div>
