@@ -8,20 +8,20 @@ use App\Models\City;
 
 class ShowDepartment extends Component
 {
+    public $listeners = ['delete'];
 
-    protected $listeners = ['delete'];
+    public $department,  $cities, $city;
 
-    public $department;
 
     public $createForm = [
         'name'=>'',
-        'cost' => null
+        'cost'=>null
     ];
 
     public $editForm = [
         'open'=>false,
         'name'=>'',
-        'cost'=> null
+        'cost'=>null
     ];
 
     protected $validationAttributes =[
@@ -29,9 +29,8 @@ class ShowDepartment extends Component
         'createForm.cost' =>'costo'
     ];
 
-
     public function mount(Department $department){
-        $this->Departmen = $department;
+        $this->Department = $department;
         $this->getCities();
     }
 
@@ -47,7 +46,7 @@ class ShowDepartment extends Component
         ]);
 
         $this->department->cities()->create($this->createForm);
-        /*City::create($this->createForm);*/
+        // City::create($this->createForm);
 
         $this->reset('createForm');
 
@@ -58,7 +57,6 @@ class ShowDepartment extends Component
 
     public function edit(City $city){
         $this->city = $city;
-
         $this->editForm['open'] = true;
         $this->editForm['name'] = $city->name;
         $this->editForm['cost'] = $city->cost;
@@ -79,7 +77,9 @@ class ShowDepartment extends Component
     }
 
 
-    public function render(){
+
+    public function render()
+    {
         return view('livewire.admin.show-department')->layout('layouts.admin');
     }
 }

@@ -152,9 +152,9 @@
         </div>
 
         <div class="bg-white rounded-lg shadow-lg p-6 mb-6 text-right ">
-                <p>SUBTOTAL: S/ {{$order->total - $order->shipping_cost}}</p>
-                <p>ENVIO: S/ {{$order->shipping_cost}}</p>
-                <p>TOTAL:  S/ {{$order->total }}</p>
+                <p>SubTotal: S/ {{$order->total - $order->shipping_cost}}</p>
+                <p>Envio: S/ {{$order->shipping_cost}}</p>
+                <p>Total:  S/ {{$order->total }}</p>
         </div>
 
 

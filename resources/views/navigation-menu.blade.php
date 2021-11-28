@@ -35,6 +35,9 @@
                     <x-jet-nav-link href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.index')">
                         Usuarios
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{route('admin.reports.index')}}" :active="request()->routeIs('admin.reports.index')">
+                        Reportes
+                    </x-jet-nav-link>
                 </div>
             </div>
 

@@ -33,7 +33,6 @@
         );
         $preference->auto_return = "approved";
 
-
         $preference->items = $products;
         $preference->save();
     @endphp
@@ -41,7 +40,8 @@
     <div class="grid grid-cols-5 gap-6 container py-8">
         <div class="col-span-3">
             <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6">
-                <p class="text-gray-700 uppercase"><span class="font-semibold">Número de orden:</span> Orden-{{$order->id}}</p>
+                <p class="text-gray-700 uppercase"><span class="font-semibold">Número de orden:</span>
+                    Orden-{{ $order->id }}</p>
             </div>
 
             <div class="bg-white rounded-lg shadow-lg p-6 mb-6 ">
@@ -55,9 +55,9 @@
                             <p class="text-sm">Calle Los Girasoles 123 </p>
                         @else
                             <p class="text-sm">Los productos serán enviados a:</p>
-                            <p class="text-sm">{{$envio->address}} </p>
-                            <p>{{$envio->department}} - {{$envio->city}} - {{$envio->district}}</p>
-                            <p>   </p>
+                            <p class="text-sm">{{ $envio->address }} </p>
+                            <p>{{ $envio->department }} - {{ $envio->city }} - {{ $envio->district }}</p>
+                            <p> </p>
                             <p></p>
 
                         @endif
@@ -66,9 +66,9 @@
 
                     <div>
                         <p class="text-lg font-semibold uppercase">Datos de contacto</p>
-                        <p class="text-sm">Persona que recibirá el producto: {{$order->contact}}</p>
-                        <p class="text-sm">Telefono de contacto: {{$order->phone}} </p>
-                        <p class="text-sm">Dni de contacto: {{$order->dni}} </p>
+                        <p class="text-sm">Persona que recibirá el producto: {{ $order->contact }}</p>
+                        <p class="text-sm">Telefono de contacto: {{ $order->phone }} </p>
+                        <p class="text-sm">Dni de contacto: {{ $order->dni }} </p>
 
                     </div>
 
@@ -92,21 +92,21 @@
                             <tr>
                                 <td>
                                     <div class="flex">
-                                        <img class="h-15 w-20 object-cover mr-4"
-                                                src="{{$item->options->image}}" alt="">
+                                        <img class="h-15 w-20 object-cover mr-4" src="{{ $item->options->image }}"
+                                            alt="">
                                         <article>
-                                            <h1 class="font-bold">{{$item->name}}</h1>
+                                            <h1 class="font-bold">{{ $item->name }}</h1>
                                         </article>
                                     </div>
                                 </td>
                                 <td class="text-center">
-                                S/ {{$item->price}}
+                                    S/ {{ $item->price }}
                                 </td>
                                 <td class="text-center">
-                                    {{$item->qty}}
+                                    {{ $item->qty }}
                                 </td>
                                 <td class="text-center">
-                                    S/ {{$item->price * $item->qty}}
+                                    S/ {{ $item->price * $item->qty }}
                                 </td>
                             </tr>
                         @endforeach
@@ -116,31 +116,34 @@
 
         </div>
 
-        <div class= "col-span-2">
+        <div class="col-span-2">
             <div class="bg-white rounded-lg shadow-lg p-6">
                 <div class="flex justify-between items-center">
-                    <img class="h-8" src="{{asset('img/MC_VI_DI_2-1.jpg')}}" alt="">
+                    <img class="h-8" src="{{ asset('img/MC_VI_DI_2-1.jpg') }}" alt="">
                     <div class="text-gray-700">
                         <p class="text-sm font-semibold">
-                            Subtotal: S/ {{$order->total - $order->shipping_cost}}
+                            Subtotal: S/ {{ $order->total - $order->shipping_cost }}
                         </p>
                         <p class="text-sm font-semibold">
-                            Envio: S/ {{$order->shipping_cost}}
+                            Envio: S/ {{ $order->shipping_cost }}
                         </p>
                         <p class="text-lg font-bold uppercase">
-                            Total: S/ {{$order->total}}
+                            Total: S/ {{ $order->total }}
                         </p>
                         <div class="cho-container">
 
                         </div>
                     </div>
                 </div>
+
+                {{-- <div id="paypal-button-container"></div> --}}
+
             </div>
         </div>
     </div>
 
     @push('script')
-         {{-- SDK MercadoPago.js V2 --}}
+        {{-- SDK MercadoPago.js V2 --}}
         <script src="https://sdk.mercadopago.com/js/v2"></script>
 
         <script>
@@ -148,7 +151,6 @@
             const mp = new MercadoPago("{{config('services.mercadopago.key')}}", {
                 locale: 'es-AR'
             });
-
             // Inicializa el checkout
             mp.checkout({
                 preference: {
@@ -159,7 +161,33 @@
                     label: 'Pagar', // Cambia el texto del botón de pago (opcional)
                 }
             });
-            // Livewire.emit('payOrder');
         </script>
     @endpush
+
+    {{-- @push('script')
+        <script src="https://www.paypal.com/sdk/js?client-id={{ config('services.paypal.client_id') }}">
+        </script>
+        <script>
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: "{{ $order->total }}"
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(orderData) {
+                        Livewire.emit('payOrder');
+                         console.log(orderData);
+                        // alert('Transaction completed by ' + details.payer.name.given_name);
+                    });
+                }
+            }).render('#paypal-button-container'); // Display payment options on your web page
+        </script>
+
+        </script>
+    @endpush --}}
 </div>

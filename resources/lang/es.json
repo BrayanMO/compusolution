@@ -1,5 +1,5 @@
 {
-    
+
     "Email": "Correo",
     "Password": "Contraseña",
     "Remember me": "Recuerdame",
@@ -8,6 +8,9 @@
     "Login": "Ingresar",
     "Register": "Registrar",
     "Profile": "Perfil",
-    "Log Out": "Cerrar Sesion"
+    "Log Out": "Cerrar Sesion",
+    "Name": "Nombre",
+    "Confirm Password": "Confirmar Contraseña",
+    "Already registered?": "¿Ya tienes una cuenta?"
 
 }

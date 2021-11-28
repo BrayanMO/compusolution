@@ -1,7 +1,7 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight capitalize">
-            Ciudad: {{$city->name}}
+            Provincia: {{$city->name}}
         </h2>
     </x-slot>
 
@@ -105,7 +105,7 @@
         </x-jet-dialog-modal>
     </div>
 
-@push('script')
+    @push('script')
 
         <script>
             Livewire.on('deleteDistrict', districtId => {
@@ -116,7 +116,7 @@
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ye, delete it!'
+                    confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         Livewire.emitTo('admin.city-component', 'delete', districtId)

@@ -67,8 +67,7 @@ class DepartmentComponent extends Component
         $this->getDepartments();
     }
 
-    public function render()
-    {
+    public function render(){
         return view('livewire.admin.department-component')->layout('layouts.admin');
     }
 }

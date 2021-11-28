@@ -88,7 +88,7 @@
 
                     <x-jet-input-error for="editForm.name"/>
                 </div>
-
+            </div>
 
         </x-slot>
         <x-slot name="footer">
@@ -109,7 +109,7 @@
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ye, delete it!'
+                    confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         Livewire.emitTo('admin.department-component', 'delete', departmentId)

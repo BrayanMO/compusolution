@@ -1,7 +1,11 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <a href="" class="mx-6">
+                {{-- <x-jet-application-mark class="block h-9 w-auto" /> --}}
+                <span class="text-4xl  h-7 w-aut text-gray-500 cursor-pointer font-bold ">Compu</span>
+                <span class="text-4xl font-bold h-7 w-aut text-orange-400 cursor-pointer">Solution</span>
+            </a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />

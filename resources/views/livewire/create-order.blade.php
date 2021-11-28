@@ -74,11 +74,11 @@
 
                     {{-- Ciudades --}}
                     <div>
-                        <x-jet-label value="Ciudad" />
+                        <x-jet-label value="Provincia" />
 
                         <select class="rounded-lg border-gray-300 shadow w-full" wire:model="city_id">
 
-                            <option value="" disabled selected>Seleccione una ciudad</option>
+                            <option value="" disabled selected>Seleccione una provincia</option>
 
                             @foreach ($cities as $city)
                                 <option value="{{$city->id}}">{{$city->name}}</option>

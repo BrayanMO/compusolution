@@ -39,7 +39,7 @@ class OrderController extends Controller
 
         $envio = json_decode($order->envio);
 
-        return view ('orders.show', compact('order','items', 'envio'));
+        return view ('orders.show', compact('order','items','envio'));
     }
 
     public function pay(Order $order, Request $request){
@@ -58,8 +58,15 @@ class OrderController extends Controller
           $order->status = 2;
           $order->save();
 
+          $items = json_decode($order->content);
+          foreach ($items as $item) {
+              auth()->user()->products()->attach($item->id);
+          }
           return redirect()->route('orders.show', $order);
       }
+
+
+
     }
 
 }

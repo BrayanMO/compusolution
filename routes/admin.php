@@ -13,6 +13,9 @@ use App\Http\Livewire\Admin\CityComponent;
 use App\Http\Livewire\Admin\ShowCategory;
 use App\Http\Livewire\Admin\UserComponent;
 use App\Http\Livewire\Admin\BrandComponent;
+use App\Http\Livewire\Admin\ReportComponent;
+use App\Http\Controllers\Admin\PdfController;
+use App\Http\Controllers\Admin\ReportpdfController;
 
 Route::get('/', ShowProducts::class)->name('admin.index');
 
@@ -41,3 +44,10 @@ Route::get('departments/{department}', ShowDepartment::class)->name('admin.depar
 Route::get('cities/{city}', CityComponent::class)->name('admin.cities.show');
 
 Route::get('users', UserComponent::class)->name('admin.users.index');
+
+Route::get('reports', ReportComponent::class)->name('admin.reports.index');
+
+// repprtes
+Route::get('pdf/ventas/',[ReportpdfController::class,'pdfventasall']);
+
+Route::get('pdf/ventas/{fecha_inicio}/{fecha_fin}',[ReportpdfController::class,'pdfventasfecha']);

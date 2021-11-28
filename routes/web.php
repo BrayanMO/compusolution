@@ -43,7 +43,6 @@ Route::middleware(['auth'])->group(function(){
 
 
 
-
 // -------------------------------------------------------------------------------------
 // Route::get('orders/search', [OrderController::class, 'search'])->name('orders.search');
 

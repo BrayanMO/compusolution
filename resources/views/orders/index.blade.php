@@ -109,7 +109,7 @@
                                                     </span>
                                                     <br>
                                                     <span text-sm>
-                                                        {{$order->total}} USD
+                                                        S/.{{$order->total}}
                                                     </span>
                                                 </div>
                                                 <span>

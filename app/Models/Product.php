@@ -13,6 +13,10 @@ class Product extends Model
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
+    public function reviews(){
+        return $this->hasMany(Review::class);
+    }
+
     // Relacion uno a muchos inversa
     public function brand(){
         return $this->belongsTo(Brand::class);
@@ -20,6 +24,10 @@ class Product extends Model
 
     public function subcategory(){
         return $this->belongsTo(Subcategory::class);
+    }
+
+    public function users(){
+        return $this->belongsToMany(User::class);
     }
 
     // relacion uno a muchos polimorfica
