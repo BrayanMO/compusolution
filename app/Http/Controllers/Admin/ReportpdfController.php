@@ -17,7 +17,6 @@ class ReportpdfController extends Controller
                 ->where('status','<>', 5)
                 ->get();
         $sumtotal = Order::sum('total');
-        return 'ventasall';
         $pdf = PDF::loadView('pdf.ventas', compact('orders', 'fecha_inicio', 'fecha_fin','sumtotal'));
 
         return $pdf->stream('pdfventas.pdf');
@@ -32,7 +31,6 @@ class ReportpdfController extends Controller
                         ->paginate(10);
         $sumtotal = Order::whereBetween('created_at', [$fi, $ff])->sum('total');
         $pdf = PDF::loadView('reporte.reporteganancia', compact('orders', 'fecha_inicio', 'fecha_fin','sumtotal'));
-        return 'ventasporfecha';
         return $pdf->stream('pdfganancias.pdf');
     }
 
