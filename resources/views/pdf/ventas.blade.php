@@ -50,15 +50,17 @@
         </h1>
         @if (empty($fecha_inicio) && empty($fecha_fin))
             <div>
-                Ventas
+                <x-jet-label value="Total de Ingresos:"/>
+                <strong>S/ {{$sumtotal}}</strong>
             </div>
         @else
             <div>
                 <label for="">Fecha Inicio:</label>
                 <input type="date"> <b>{{ $fecha_inicio }}</b>
-                <label for="">Fecha Fin:</label>
-                <input type="date"> <b>{{ $fecha_fin }}</b>
-                {{--  --}}
+                <label for=""> -  Fecha Fin:</label>
+                <input type="date"> <b>{{ $fecha_fin }}</b><br><br>
+                <x-jet-label value="Total de Ingresos:"/>
+                <strong>S/ {{$sumtotal}}</strong>
             </div>
         @endif
         <!--Card-->
