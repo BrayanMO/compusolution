@@ -28,7 +28,7 @@
 
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label>
-                    Ícono
+                    Ícono (<a class="text-gray-400 hover:underline hover:text-blue-500" href="https://fontawesome.com/">Visita FontAwesome para elegir uno </a>)
                 </x-jet-label>
                 <x-jet-input wire:model.defer="createForm.icon" type="text" class="w-full mt-1"/>
 

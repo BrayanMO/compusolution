@@ -1,5 +1,8 @@
 <section class="mt-4" >
-    @can ('enrolled', $product)
+    <div class="bg-white rounded-2xl shadow-lg p-4 text-gray-700 m-4">
+        <h1  class=" text-center font-bold text-2xl text-gray-600 mb-2">({{ $product->reviews->count()}}) Reseñas</h1>
+    </div>
+    {{-- @can ('enrolled', $product)
     <div class="bg-white rounded-2xl shadow-lg p-4 text-gray-700 m-4">
         <h1  class="font-bold text-3xl text-gray-600 mb-2">Reseñas</h1>
     @else
@@ -7,7 +10,7 @@
         <div class="bg-white rounded-2xl shadow-lg p-4 text-gray-700 m-4">
             <h5  class="font-bold text-xl text-gray-600 mb-2 text-center">Aún no hay reseñas sobre este producto</h5>
         </div>
-    @endcan
+    @endcan --}}
     @can('enrolled', $product)
             <article class="mb-4">
                 @can('valued', $product)
@@ -39,11 +42,9 @@
                     </div>
                 @endcan
             </article>
-        </div>
     @endcan
     <div class="card">
         <div class="card-body">
-            {{-- <p class="text-gray-800 text-xl">{{ $product->reviews->count() }} valoraciones</p> --}}
             @foreach ($product->reviews as $review)
                 <div class="bg-white rounded-2xl shadow-lg p-4 text-gray-700 m-4 hover:bg-gray-100">
                     <article class="flex mb-4 text-gray-800">
