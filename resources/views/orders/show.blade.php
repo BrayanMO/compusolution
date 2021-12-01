@@ -13,17 +13,6 @@
                     </div>
                 </div>
 
-                <div class="{{ ($order->status >=3 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} h-1 flex-1  mx-2"></div>
-
-                <div class="relative ">
-                    <div class="{{ ($order->status >=3 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} rounded-full h-12 w-12  flex items-center justify-center">
-                        <i class="fas fa-check text-white"></i>
-                    </div>
-                    <div class="absolute -left-1 mt0-0.5">
-                        <p>Enviado</p>
-                    </div>
-                </div>
-
                 <div class="{{ ($order->status >=4 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} h-1 flex-1  mx-2"></div>
 
                 <div class="relative">
@@ -145,6 +134,21 @@
                             <td class="text-center">
                                 S/ {{$item->price * $item->qty}}
                             </td>
+                            <td>
+
+                            </td>
+                            @if ($order->status == 1 || $order->status == 5  )
+
+                            @else
+                                <td>
+                                    <a class="-mr-14" href="{{route('products.show', Str::slug($item->name))}}">
+                                        <x-jet-button>
+                                            Calificar
+                                        </x-jet-button>
+                                    </a>
+                                </td>
+                            @endif
+
                         </tr>
                     @endforeach
                 </tbody>

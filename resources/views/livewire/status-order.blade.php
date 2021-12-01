@@ -1,37 +1,62 @@
 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-    <div class="bg-white rounded-lg shadow-lg px-12 py-8 mb-6 flex items-center">
-        <div class="relative ">
-            <div class="{{ ($order->status >=2 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} rounded-full h-12 w-12  flex items-center justify-center">
-                <i class="fas fa-check text-white"></i>
+    @if ($order->envio_type == 1)
+        <div class="bg-white rounded-lg shadow-lg px-12 py-8 mb-6 flex items-center">
+            <div class="relative ">
+                <div class="{{ ($order->status >=2 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} rounded-full h-12 w-12  flex items-center justify-center">
+                    <i class="fas fa-check text-white"></i>
+                </div>
+                <div class="absolute -left-1.5 mt0-0.5">
+                    <p>Recibido</p>
+                </div>
             </div>
-            <div class="absolute -left-1.5 mt0-0.5">
-                <p>Recibido</p>
+
+            <div class="{{ ($order->status >=4 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} h-1 flex-1  mx-2"></div>
+
+            <div class="relative">
+                <div class="{{ ($order->status >=4 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} rounded-full h-12 w-12 flex items-center justify-center">
+                    <i class="fas fa-truck text-white"></i>
+                </div>
+                <div class="absolute -left-2 mt0-0.5">
+                    <p>Entregado</p>
+                </div>
+            </div>
+        </div>
+    @else
+        <div class="bg-white rounded-lg shadow-lg px-12 py-8 mb-6 flex items-center">
+            <div class="relative ">
+                <div class="{{ ($order->status >=2 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} rounded-full h-12 w-12  flex items-center justify-center">
+                    <i class="fas fa-check text-white"></i>
+                </div>
+                <div class="absolute -left-1.5 mt0-0.5">
+                    <p>Recibido</p>
+                </div>
+            </div>
+
+            <div class="{{ ($order->status >=3 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} h-1 flex-1  mx-2"></div>
+
+            <div class="relative">
+                <div class="{{ ($order->status >=3 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} rounded-full h-12 w-12 flex items-center justify-center">
+                    <i class="fas fa-truck text-white"></i>
+                </div>
+                <div class="absolute -left-1 mt0-0.5">
+                    <p>Enviado</p>
+                </div>
+            </div>
+
+            <div class="{{ ($order->status >=4 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} h-1 flex-1  mx-2"></div>
+
+            <div class="relative">
+                <div class="{{ ($order->status >=4 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} rounded-full h-12 w-12 flex items-center justify-center">
+                    <i class="fas fa-check text-white"></i>
+                </div>
+                <div class="absolute -left-2 mt0-0.5">
+                    <p>Entregado</p>
+                </div>
             </div>
         </div>
 
-        <div class="{{ ($order->status >=3 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} h-1 flex-1  mx-2"></div>
-
-        <div class="relative">
-            <div class="{{ ($order->status >=3 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} rounded-full h-12 w-12 flex items-center justify-center">
-                <i class="fas fa-truck text-white"></i>
-            </div>
-            <div class="absolute -left-1 mt0-0.5">
-                <p>Enviado</p>
-            </div>
-        </div>
-
-        <div class="{{ ($order->status >=4 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} h-1 flex-1  mx-2"></div>
-
-        <div class="relative">
-            <div class="{{ ($order->status >=4 && $order->status !=5) ? 'bg-blue-400' : 'bg-gray-400'}} rounded-full h-12 w-12 flex items-center justify-center">
-                <i class="fas fa-check text-white"></i>
-            </div>
-            <div class="absolute -left-2 mt0-0.5">
-                <p>Entregado</p>
-            </div>
-        </div>
-    </div>
+    @endif
 
 
     <div class="bg-white rounded-lg shadow-lg px-6 py-4 mb-6 ">
@@ -43,10 +68,13 @@
                     <input wire:model="status" type="radio" name="status" value="2" class="mr-2">
                     RECIBIDO
                 </x-jet-label>
+            @if ($order->envio_type == 2)
                 <x-jet-label>
                     <input wire:model="status" type="radio" name="status" value="3" class="mr-2">
                     ENVIADO
                 </x-jet-label>
+
+            @endif
                 <x-jet-label>
                     <input wire:model="status" type="radio" name="status" value="4" class="mr-2">
                     ENTREGADO

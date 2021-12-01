@@ -63,23 +63,19 @@
                             <th class="py-2">Acción</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-gray-300 h-80">
+                    <tbody class="divide-y divide-gray-300">
                         @foreach ($cities as $city)
                             <tr>
                                 <td class="py-2">
-
-                                    <a href="{{ route('admin.cities.show', $city) }}"
-                                        class="upercase underline hover:text-blue-600">
+                                    <a href="{{ route('admin.cities.show', $city) }}" class="upercase underline hover:text-blue-600">
                                         {{ $city->name }}
                                     </a>
 
                                 </td>
                                 <td class="py-2">
                                     <div class="flex divide-x divide-gray-300 font-semibold">
-                                        <a class="pr-2 hover:text-blue-600 cursor-pointer"
-                                            wire:click="edit({{ $city }})">Editar</a>
-                                        <a class="pl-2 hover:text-red-600 cursor-pointer"
-                                            wire:click="$emit('deleteCity', {{ $city->id }})">Eliminar</a>
+                                        <a class="pr-2 hover:text-blue-600 cursor-pointer" wire:click="edit({{ $city }})">Editar</a>
+                                        <a class="pl-2 hover:text-red-600 cursor-pointer" wire:click="$emit('deleteCity', {{ $city->id }})">Eliminar</a>
                                     </div>
                                 </td>
                             </tr>

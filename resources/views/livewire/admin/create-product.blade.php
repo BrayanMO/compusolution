@@ -6,7 +6,7 @@
 
         {{-- Categoria --}}
         <div>
-            <x-jet-label class="mb-2 text-md" value="Fecga Inicial" />
+            <x-jet-label class="mb-2 text-md" value="Categorias" />
             <select class="w-full form-control border-gray-200 shadow rounded-lg" wire:model="category_id" >
                 <option value="" selected disabled >Seleccione una categoría</option>
 
@@ -22,7 +22,7 @@
         {{-- Subcategoria --}}
 
         <div>
-            <x-jet-label class="mb-2 text-md" value="Fecha " />
+            <x-jet-label class="mb-2 text-md" value="Subcategorias" />
             <select class="w-full form-control border-gray-200 shadow rounded-lg" wire:model="subcategory_id" >
                 <option value="" selected disabled >Seleccione una subcategoría</option>
 
