@@ -38,6 +38,11 @@
                     <x-jet-nav-link href="{{route('admin.reports.index')}}" :active="request()->routeIs('admin.reports.index')">
                         Reportes
                     </x-jet-nav-link>
+                    <a href="https://tecnico-2hp7n.ondigitalocean.app/" target="_blank">
+                        <x-jet-button class="mt-5 h-8 flex items-center">
+                            Servicio Tecnico
+                        </x-jet-button>
+                    </a>
                 </div>
             </div>
 
@@ -179,6 +184,9 @@
             <x-jet-responsive-nav-link href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.index')">
                 Usuarios
             </x-jet-responsive-nav-link>
+            <x-jet-nav-link href="{{route('admin.reports.index')}}" :active="request()->routeIs('admin.reports.index')">
+                Reportes
+            </x-jet-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
