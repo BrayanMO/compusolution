@@ -14,7 +14,6 @@ use App\Http\Livewire\Admin\ShowCategory;
 use App\Http\Livewire\Admin\UserComponent;
 use App\Http\Livewire\Admin\BrandComponent;
 use App\Http\Livewire\Admin\ReportComponent;
-use App\Http\Controllers\Admin\PdfController;
 use App\Http\Controllers\Admin\ReportpdfController;
 
 Route::get('/', ShowProducts::class)->name('admin.index');

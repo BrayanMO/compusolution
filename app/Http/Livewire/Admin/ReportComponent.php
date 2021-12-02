@@ -27,12 +27,17 @@ class ReportComponent extends Component
                         ->where('status','<>', 5)
                         ->wherebetween('created_at', [$fi, $ff])
                         ->paginate(10);
-            $this->sumtotal = Order::whereBetween('created_at', [$fi, $ff])->sum('total');
+            $this->sumtotal = Order::whereBetween('created_at', [$fi, $ff])
+                        ->where('status','<>', 5)
+                        ->where('status','<>', 1)
+                        ->sum('total');
         }else{
             $orders = Order::where('status','<>', 1)
                         ->where('status','<>', 5)
                         ->paginate(10);
-            $this->sumtotal = Order::sum('total');
+            $this->sumtotal = Order::where('status','<>', 5)
+                            ->where('status','<>', 1)
+                            ->sum('total');
         }
         $sumtotal =$this->sumtotal;
 
