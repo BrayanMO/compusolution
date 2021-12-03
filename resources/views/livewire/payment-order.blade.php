@@ -130,9 +130,9 @@
                         <p class="text-lg font-bold uppercase">
                             Total: S/ {{ $order->total }}
                         </p>
-                        {{-- <div class="cho-container">
+                        <div class="cho-container">
 
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
 
