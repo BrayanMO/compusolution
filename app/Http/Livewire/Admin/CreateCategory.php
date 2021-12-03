@@ -81,7 +81,7 @@ class CreateCategory extends Component
     public function save(){
         $this->validate();
 
-        $image = $this->createForm['image']->store('categories', 'local');
+        $image = $this->createForm['image']->store('categories');
 
         $category = Category::create([
            'name' => $this->createForm['name'],
