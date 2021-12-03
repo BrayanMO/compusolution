@@ -1,4 +1,4 @@
-<section class="mt-4" >
+<section class="mt-6" >
     <div class="bg-white rounded-2xl shadow-lg p-4 text-gray-700 m-4">
         <h1  class=" text-center font-bold text-2xl text-gray-600 mb-2">({{ $product->reviews->count()}}) Reseñas</h1>
     </div>

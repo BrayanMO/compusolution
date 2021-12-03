@@ -25,6 +25,11 @@ class PaymentOrder extends Component
         $this->order->status = 2;
         $this->order->save();
 
+        $items = json_decode($this->order->content);
+        foreach ($items as $item){
+            auth()->user()->products()->attach($item->id);
+        }
+
         return redirect()->route('orders.show', $this->order);
 
     }
@@ -32,9 +37,7 @@ class PaymentOrder extends Component
     public function render()
     {
         $this->authorize('author', $this->order);
-
-
-
+        
         $items = json_decode($this->order->content);
 
         $envio = json_decode($this->order->envio);

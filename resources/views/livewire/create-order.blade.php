@@ -1,6 +1,6 @@
-<div class="container py-8 grid grid-cols-5 gap-6">
+<div class="container py-8 grid lg:grid-cols-2 xl:grid-cols-5 gap-6">
 
-    <div class="col-span-3">
+    <div class="order-2 lg:order-1 lg:col-span-1 xl:col-span-3">
 
         <div class="bg-white rounded-lg shadow p-6">
             <div class="mb-4">
@@ -134,7 +134,7 @@
 
     </div>
 
-    <div class="col-span-2">
+    <div class="order-1 lg:order-2 lg:col-span-1 xl:col-span-2">
        <div class="bg-white rounded-lg shadow p-6">
             <ul>
                 @forelse (Cart::content() as $item)
