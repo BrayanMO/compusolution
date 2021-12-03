@@ -156,6 +156,10 @@
             </ul>
             <p class="text-gray-500 px-6 my-2 ">USUARIOS</p>
 
+            <x-jet-dropdown-link href="{{ route('orders.index') }}">
+                Mis Pedidos
+            </x-jet-dropdown-link>
+            
             @livewire('cart-mobil')
 
             @auth
