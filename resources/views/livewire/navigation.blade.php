@@ -154,12 +154,15 @@
                     </li>
                 @endforeach
             </ul>
-            <p class="text-gray-500 px-6 my-2 ">USUARIOS</p>
 
-            <x-jet-dropdown-link href="{{ route('orders.index') }}">
-                Mis Pedidos
-            </x-jet-dropdown-link>
-            
+            <div class="flex justify-between">
+                <p class="text-gray-500 px-6 my-2 ">USUARIOS</p>
+
+                <x-jet-dropdown-link class="text-gray-700 px-6 my-2 uppercase text-lg" href="{{ route('orders.index') }}">
+                    Mis Pedidos
+                </x-jet-dropdown-link>
+            </div>
+
             @livewire('cart-mobil')
 
             @auth
