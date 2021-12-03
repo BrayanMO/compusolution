@@ -16,13 +16,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        // Storage::deleteDirectory('categories');
+        Storage::deleteDirectory('categories');
         // Storage::deleteDirectory('subcategories');
-        // Storage::deleteDirectory('products');
+        Storage::deleteDirectory('products');
 
-        // Storage::makeDirectory('categories');
+        Storage::makeDirectory('categories');
         // Storage::makeDirectory('subcategories');
-        // Storage::makeDirectory('products');
+        Storage::makeDirectory('products');
 
         $this->call(UserSeeder::class);
         $this->call(CategorySeeder::class);
