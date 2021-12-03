@@ -1,5 +1,5 @@
 <div>
-
+{{--
     @php
 
         // SDK de Mercado Pago
@@ -35,7 +35,7 @@
 
         $preference->items = $products;
         $preference->save();
-    @endphp
+    @endphp --}}
 
     <div class="grid grid-cols-5 gap-6 container py-8">
         <div class="col-span-3">
@@ -117,8 +117,8 @@
         </div>
 
         <div class="col-span-2">
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex justify-between items-center">
+            <div class="bg-white rounded-lg shadow-lg px-6 pt-6">
+                <div class="flex justify-between items-center mb-4">
                     <img class="h-8" src="{{ asset('img/MC_VI_DI_2-1.jpg') }}" alt="">
                     <div class="text-gray-700">
                         <p class="text-sm font-semibold">
@@ -130,43 +130,44 @@
                         <p class="text-lg font-bold uppercase">
                             Total: S/ {{ $order->total }}
                         </p>
-                        <div class="cho-container">
+                        {{-- <div class="cho-container">
 
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
-                {{-- <div id="paypal-button-container"></div> --}}
+                <div id="paypal-button-container"></div>
 
             </div>
         </div>
     </div>
-
+{{--
     @push('script')
-        {{-- SDK MercadoPago.js V2 --}}
         <script src="https://sdk.mercadopago.com/js/v2"></script>
 
         <script>
-            // Agrega credenciales de SDK
+
             const mp = new MercadoPago("{{config('services.mercadopago.key')}}", {
                 locale: 'es-AR'
             });
-            // Inicializa el checkout
+
             mp.checkout({
                 preference: {
                     id: '{{$preference->id}}'
                 },
                 render: {
-                    container: '.cho-container', // Indica el nombre de la clase donde se mostrará el botón de pago
-                    label: 'Pagar', // Cambia el texto del botón de pago (opcional)
+                    container: '.cho-container',
+                    label: 'Pagar',
                 }
             });
         </script>
     @endpush
+--}}
 
-    {{-- @push('script')
+    @push('script')
         <script src="https://www.paypal.com/sdk/js?client-id={{ config('services.paypal.client_id') }}">
         </script>
+
         <script>
             paypal.Buttons({
                 createOrder: function(data, actions) {
@@ -181,13 +182,11 @@
                 onApprove: function(data, actions) {
                     return actions.order.capture().then(function(orderData) {
                         Livewire.emit('payOrder');
-                         console.log(orderData);
+                        //  console.log(orderData);
                         // alert('Transaction completed by ' + details.payer.name.given_name);
                     });
                 }
             }).render('#paypal-button-container'); // Display payment options on your web page
         </script>
-
-        </script>
-    @endpush --}}
+    @endpush
 </div>

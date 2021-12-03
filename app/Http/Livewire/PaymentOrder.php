@@ -16,6 +16,9 @@ class PaymentOrder extends Component
 
     public function mount(Order $order){
         $this->order = $order;
+        if ($this->order->status == 2){
+            $this->authorize('payment', $this->order);
+        }
     }
 
     public function payOrder(){
@@ -30,7 +33,7 @@ class PaymentOrder extends Component
     {
         $this->authorize('author', $this->order);
 
-        $this->authorize('payment', $this->order);
+
 
         $items = json_decode($this->order->content);
 
