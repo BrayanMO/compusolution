@@ -13,26 +13,20 @@
                     <p class="font-bold text-gray-700">S/ {{$product->price}}</p>
                 </div>
 
-                <div class="flex items-center">
-                    <ul class="flex text-sm ">
-                        <li>
-                            <i class="fas fa-star text-yellow-400 mr-1"></i>
-                        </li>
-                        <li>
-                            <i class="fas fa-star text-yellow-400 mr-1"></i>
-                        </li>
-                        <li>
-                            <i class="fas fa-star text-yellow-400 mr-1"></i>
-                        </li>
-                        <li>
-                            <i class="fas fa-star text-yellow-400 mr-1"></i>
-                        </li>
-                        <li>
-                            <i class="fas fa-star text-yellow-400 mr-1"></i>
-                        </li>
-                    </ul>
-                    <span class="text-gray-700 text-sm">(24)</span>
-                </div>
+                @if($product->reviews->count())
+                    <div class="flex items-center">
+                        <ul class="flex text-sm ">
+                            <li>
+                                <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            </li>
+                           
+                        </ul>
+                        <span class="text-gray-700 text-sm">({{$product->reviews->avg('rating')}})</span>
+                    </div>
+                @else
+                    <i class="fas fa-star text-gray-700 ml-auto pt-1"></i>
+                    <p>(0)</p>
+                @endif
             </div>
             <div class="mt-4 md:mt-auto mb-4">
                 <x-danger-enlace href="{{route('products.show', $product)}}">

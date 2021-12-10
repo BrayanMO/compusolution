@@ -19,7 +19,7 @@
 
                 <div class="flex mb-4">
                     <p class="text-gray-700">Marca: <a class="underline capitalize hover:text-orange-500" href="">{{$product->brand->name}}</a></p>
-                    <p class="text-gray-700 mx-6">5<i class="fas fa-star text-sm text-yellow-400"></i></p>
+                    <p class="text-gray-700 mx-6">{{round($product->reviews->avg('rating'), 2)}}<i class="fas fa-star text-sm text-yellow-400"></i></p>
                     <a class="text-orange-500 hover:text-orange-600 underline " href="#reseñas">{{ $product->reviews->count() }} reseñas</a>
                 </div>
 

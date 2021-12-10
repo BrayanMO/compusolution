@@ -155,7 +155,7 @@
                 @endforeach
             </ul>
 
-            <div class="flex justify-between">
+            <div class="flex justify-between items-center">
                 <p class="text-gray-500 px-6 my-2 ">USUARIOS</p>
 
                 <x-jet-dropdown-link class="text-gray-700 px-6 my-2 uppercase text-lg" href="{{ route('orders.index') }}">

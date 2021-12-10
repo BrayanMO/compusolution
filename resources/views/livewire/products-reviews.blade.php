@@ -47,16 +47,28 @@
         <div class="card-body">
             @foreach ($product->reviews as $review)
                 <div class="bg-white rounded-2xl shadow-lg p-4 text-gray-700 m-4 hover:bg-gray-100">
-                    <article class="flex mb-4 text-gray-800">
+                    <article class=" flex mb-4 text-gray-800">
                         <figure class="mr-4">
                             <img class="h-12 w-12 object-cover rounded-full shadow-lg" src="{{ $review->user->profile_photo_url }}" alt="">
                         </figure>
                         <div class="flex-1">
-                            <div>
+                            {{-- <div>
                                 <p><b>{{ $review->user->name }}</b> <i class="fas fa-star text-yellow-300"></i> ({{ $review->rating }})</p>
+
                                 {{ $review->comment }}
+                            </div> --}}
+                            <p class="font-semibold">{{$review->user->name}}</p>
+                            <p class="text-sm">{{$review->created_at->diffForHumans()}}</p>
+                            <div class="p-1">
+                                {!! $review->comment !!}
                             </div>
                         </div>
+                            <div >
+                                <p>
+                                    {{$review->rating}}
+                                    <i class="fas fa-star text-yellow-500 "></i>
+                                </p>
+                            </div>
                     </article>
                </div>
             @endforeach
