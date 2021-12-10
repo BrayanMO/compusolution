@@ -158,14 +158,22 @@
             <div class="flex justify-between items-center">
                 <p class="text-gray-500 px-6 my-2 ">USUARIOS</p>
 
-                <x-jet-dropdown-link class="text-gray-700 px-6 my-2 uppercase text-lg" href="{{ route('orders.index') }}">
+                {{-- <x-jet-dropdown-link class="text-gray-700 px-6 my-2 uppercase text-lg" href="{{ route('orders.index') }}">
                     Mis Pedidos
-                </x-jet-dropdown-link>
+                </x-jet-dropdown-link> --}}
             </div>
 
             @livewire('cart-mobil')
 
             @auth
+
+                <a href="{{ route('orders.index') }}" class=" py-2 px-4 text-sm flex items-center text-gray-600 hover:bg-orange-500 hover:text-white">
+
+                    <span class="flex justify-center w-9">
+                        <i class="fas fa-bell"></i>
+                    </span>
+                    Mis Pedidos
+                </a>
                 <a href="{{ route('profile.show') }}" class=" py-2 px-4 text-sm flex items-center text-gray-600 hover:bg-orange-500 hover:text-white">
 
                     <span class="flex justify-center w-9">
