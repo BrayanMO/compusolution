@@ -21,6 +21,9 @@
         {{-- flexSlider --}}
         <link rel="stylesheet" href="{{ asset('vendor/FlexSlider/flexslider.css')}}">
 
+        {{-- Icon --}}
+        <link rel="shortcut icon" href="img/logoCompusolution.jpg" />
+
         @livewireStyles
 
         <!-- Scripts -->
