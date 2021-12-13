@@ -184,11 +184,8 @@
                     <span class="text-lg">Total </span>
                     @if ($envio_type == 1)
                         S/ {{Cart::subtotal()}}
-                    @elseif ($envio_type == 2)
-                    S/ {{(Cart::subtotal() + $shipping_cost)}}
-                    <script>
-                        console.log(Cart::subtotal() + $shipping_cost)
-                    </script>
+                    @else
+                    S/ {{Cart::subtotal() + $shipping_cost}}
                     @endif
                 </p>
 
