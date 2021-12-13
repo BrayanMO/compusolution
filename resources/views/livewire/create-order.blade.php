@@ -165,7 +165,7 @@
             <div class="text-gray-700 ">
                 <p class="flex justify-between items-center">
                     Subtotal
-                    <span class="font-semibold">S/ {{(float)Cart::subtotal()}} </span>
+                    <span class="font-semibold">S/ {{Cart::subtotal()}} </span>
                 </p>
                 <p class="flex justify-between items-center">
                     Envío
@@ -183,9 +183,9 @@
                 <p class="flex justify-between items-center font-semibold">
                     <span class="text-lg">Total </span>
                     @if ($envio_type == 1)
-                        S/ {{Cart::subtotal()}}
+                        S/ {{str_replace(",", "", Cart::subtotal())}}
                     @else
-                    S/ {{(float)Cart::subtotal() + $shipping_cost}}
+                    S/ {{str_replace(",", "", Cart::subtotal()) + $shipping_cost}}
                     @endif
                 </p>
 
