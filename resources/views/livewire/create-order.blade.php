@@ -37,7 +37,7 @@
             <label class="bg-white rounded-lg shadow px-6 py-4 flex items-center mb-4">
                 <input x-model="envio_type" type="radio" value="1" name="envio_type" class="text-gray-600" >
                 <span class="ml-2 text-gray-700">
-                    Recojo en tienda (Calle Los Girasoles 123)
+                    Recojo en tienda (Jr. Pedro Chamochumbe Nro. 491 - El Agustino - Lima)
                 </span>
                 <span class="font-semibold text-gray-700 ml-auto">
                     Gratis
