@@ -165,7 +165,7 @@
             <div class="text-gray-700 ">
                 <p class="flex justify-between items-center">
                     Subtotal
-                    <span class="font-semibold">S/ {{Cart::subtotal()}} </span>
+                    <span class="font-semibold">S/ {{(int)Cart::subtotal()}} </span>
                 </p>
                 <p class="flex justify-between items-center">
                     Envío
