@@ -26,6 +26,15 @@
 
         @livewireStyles
 
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YDGK2FCXQK"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-YDGK2FCXQK');
+        </script>
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
         {{-- Glider --}}
