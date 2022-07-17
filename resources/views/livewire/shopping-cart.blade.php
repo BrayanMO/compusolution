@@ -69,14 +69,15 @@
                 </tbody>
             </table>
 
-            <div class="px-6 py-4 bg-white">
-                <a class="text-sm cursor-pointer hover:underline mt-3 inline-block"
-                    wire:click="destroy">
+                wire:click="destroy">
 
-                    <i class="fas fa-trash"></i>
-                    Borrar carrito de compras
-                </a>
-            </div>
+                <div class="px-6 py-4">
+                    <a class="text-sm cursor-pointer hover:underline mt-3 inline-block"
+                        wire:click="destroy">
+                        <i class="fas fa-trash"></i>
+                        Borrar carrito de compras
+                    </a>
+                </div>
         @else
             <div class="flex flex-col items-center">
                 <x-cart class="flex"/>

@@ -17,6 +17,7 @@ Route::get('/', welcomeController::class);
 
 Route::get('search', SearchController::class)->name('search');
 
+
 Route::get('categories/{category}',[CategoryController::class, 'show'])->name('categories.show');
 
 Route::get('products/{product}', [ProductController::class, 'show'])->name('products.show');

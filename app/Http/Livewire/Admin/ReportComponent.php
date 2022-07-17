@@ -9,7 +9,6 @@ use Carbon\Carbon;
 
 class ReportComponent extends Component
 {
-
     public $fecha_inicio, $fecha_fin;
     public $sumtotal;
 
@@ -19,7 +18,6 @@ class ReportComponent extends Component
     }
     public function render()
     {
-
         if (!$this->fecha_inicio == '' && !$this->fecha_fin == '') {
             $fi = Carbon::parse($this->fecha_inicio)->format('Y-m-d 00:00:00');
             $ff = Carbon::parse($this->fecha_fin)->format('Y-m-d 23:59:59');
