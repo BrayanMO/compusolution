@@ -19,7 +19,6 @@
         "livewire/livewire": "^2.5",
         "mercadopago/dx-php": "^2.4",
         "spatie/laravel-permission": "^5.4",
-        "fzaninotto/faker": "^1.4",
         "fakerphp/faker": "^1.9.1"
     },
     "require-dev": {
