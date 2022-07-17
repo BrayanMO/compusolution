@@ -42,7 +42,7 @@ class CategorySeeder extends Seeder
         ];
 
         foreach ($categories as $category){
-            $category = Category::create($category)->first();
+            Category::create($category);
 
             // $brands = Brand::factory(4)->create();
 
