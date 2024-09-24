@@ -139,7 +139,7 @@
 
                             @else
                                 <td>
-                                    <a class="-mr-14" href="{{route('products.show', Str::slug($item->name))}}">
+                                    <a class="-mr-12" href="{{route('products.show', Str::slug($item->name))}}">
                                         <x-jet-button>
                                             Calificar
                                         </x-jet-button>

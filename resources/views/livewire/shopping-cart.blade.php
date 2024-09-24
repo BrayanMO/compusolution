@@ -69,8 +69,6 @@
                 </tbody>
             </table>
 
-                wire:click="destroy">
-
                 <div class="px-6 py-4">
                     <a class="text-sm cursor-pointer hover:underline mt-3 inline-block"
                         wire:click="destroy">
